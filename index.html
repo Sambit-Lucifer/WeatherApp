@@ -51,6 +51,20 @@
       </div>
     </div>
 
+<div id="cookieConsentContainer" class="cookie-consent-container">
+      <p>
+        This website uses cookies to ensure you get the best experience on our
+        website.
+      </p>
+      <button id="acceptCookieConsent" onclick="acceptCookieConsent();">
+        Accept
+      </button>
+      <button id="rejectCookieConsent" onclick="rejectCookieConsent();">
+        Reject
+      </button>
+    </div>
+
+
     <script>
       const apiKey = "7b6f3e16245b01e616d965fa484f314d";
       const apiUrl =
@@ -107,6 +121,46 @@ searchBox.addEventListener("keypress", (event) => {
   }
 });
 
+       window.onload = function () {
+        if (!getCookie("cookieConsent")) {
+          document.getElementById("cookieConsentContainer").style.display =
+            "block";
+        }
+      };
+
+      function acceptCookieConsent() {
+        setCookie("cookieConsent", "1", 365);
+        document.getElementById("cookieConsentContainer").style.display =
+          "none";
+      }
+
+      function rejectCookieConsent() {
+        document.getElementById("cookieConsentContainer").style.display =
+          "none";
+        // Handle the rejection logic here
+      }
+
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
    
     </script>
   </body>
