@@ -104,3 +104,31 @@ body {
   margin-top: 10px;
   display: none;
 }
+
+.cookie-consent-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+    display: none; /* Hidden by default */
+}
+
+.cookie-consent-container p {
+    margin: 10px 0;
+}
+
+.cookie-consent-container button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+
+.cookie-consent-container button:hover {
+    background-color: #005f73;
+}
